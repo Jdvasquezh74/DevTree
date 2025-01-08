@@ -1,10 +1,11 @@
 import express from 'express'
+import router from './router'
 
 const app = express()
 
-//Routing
-app.get("/", (req, res) => {
-    res.send('Hola mundo en Express / TypeScript')
-})
+//Leer datos de formularios
+app.use(express.json())
+
+app.use('/', router)
 
 export default app
