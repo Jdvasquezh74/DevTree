@@ -1,11 +1,14 @@
 import { Router } from 'express'
+import User from './models/User'
 
 const router = Router()
 
 /** Autenticación y registro de usuarios */
-router.post("/auth/register", (req, res) => {
-    console.log(req.body)
-    res.send("Desde Registro")
+router.post("/auth/register", async (req, res) => {
+    
+    await User.create(req.body)
+    res.send("Respuesta enviada desde Registro")
+
 })
 
 export default router
