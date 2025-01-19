@@ -6,13 +6,6 @@ import { checkPassword, hashPassword } from '../utils/auth'
 
 export const createUser = async (req: Request, res: Response) : Promise<any> => {
 
-    //Manejar errores
-    let errors = validationResult(req)
-
-    if (!errors.isEmpty()) {
-        return res.status(400).json({errors : errors.array()})
-    }
-
     const {email, password} = req.body
 
     const userExists = await User.findOne({email})
@@ -42,13 +35,6 @@ export const createUser = async (req: Request, res: Response) : Promise<any> => 
 }
 
 export const login = async (req: Request, res: Response) : Promise<any> => {
-
-    //Manejar errores
-    let errors = validationResult(req)
-
-    if (!errors.isEmpty()) {
-        return res.status(400).json({errors : errors.array()})
-    }
 
     const {email, password} = req.body
 
